@@ -1,0 +1,13 @@
+h6 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+    font-style: italic;
+    color: #ff8383;
+    background-color: #456973;
+    border: 1px solid gray;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,37 @@
+<div *ngIf="!loading">
+
+    <div class="search">
+        <input
+        type="text"
+        id="search-box"
+        placeholder="Поиск"
+        [(ngModel)]='search'>
+    </div>
+    <hr>
+    <table id="table1" *ngIf="organizerService.tasks.length; else noTasks">
+        <tr>
+            <th>№</th>
+            <th>Задача</th>
+            <th>Дата</th>
+            <th>Сататус</th>
+            <th>Удалить</th>
+        </tr>
+        <tr *ngFor ="let task of organizerService.tasks | taskFilter: search; let i = index"> <!--деректива для многократного повторения компонента -->
+            <td>{{ i + 1 }}</td>
+            <td [class.done]="task.completed">{{ task.title }}</td>
+            <td [class.done]="task.completed">{{ task.date }}</td>
+            <td><input type="checkbox" [checked]="task.completed" (change)="onChange(task.id)"></td>
+            <td><button (click)="delTask(task.id)">&times;</button></td>
+        </tr>
+    </table>
+
+    <ng-template #noTasks>
+        <h4>Not any tasks now</h4>
+    </ng-template>
+
+<!-- [] - свойства, () - события -->
+</div>
+
+<div *ngIf="loading">
+    <h5>Loading ...</h5>
+</div>
